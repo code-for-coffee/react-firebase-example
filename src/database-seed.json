@@ -1,0 +1,18 @@
+{
+  "products": {
+    "Laptop": {
+      "name": "Macbook",
+      "price": { 
+      	"sale": false,
+      	"cost": "1599.99"
+      }
+    },
+    "Phone": {
+      "name": "iPhone",
+      "price": { 
+      	"sale": true,
+      	"cost": "399.99"
+      }
+    }
+  }
+}
