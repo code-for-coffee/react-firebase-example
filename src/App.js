@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import firebase from './Firebase.js';
+import ProductListItem from './ProductListItem.js';
 import './App.css';
 
 class App extends Component {
@@ -30,19 +31,23 @@ class App extends Component {
       })
     });
   }
-  render() {
-    console.log('render() called');
+  createProductsList() {
     let productsList = this.state.products.map((product) => {
       console.log(product)
       if (product.onSale === true) {
         product.sale = 'ON SALE';
       }
+      console.log('Current App State:', this.state);
+      console.log('Current Products in JSX:', productsList);
       return (
-        <li key={product.name}>{product.name} at a cost of {product.price} {product.sale}</li>
+        <ProductListItem product={product} />
       )
     });
-    console.log('Current App State:', this.state);
-    console.log('Current Products in JSX:', productsList);
+    return productsList;
+  }
+  render() {
+    console.log('render() called');
+    let productList = this.createProductsList();
     return (
       <div className="App">
         <div className="App-header">
@@ -51,7 +56,7 @@ class App extends Component {
         </div>
         <h4 className="App-intro">List of Products</h4>
          <ul>
-           {productsList}
+           {productList}
          </ul>
         </div>
     );
